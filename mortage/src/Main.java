@@ -3,18 +3,20 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        final byte months = 12;
+        final byte percent = 100;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Principal: ");
-        long principal = scanner.nextLong();
+        int principal = scanner.nextInt();
         System.out.print("Annual Interest Rate: ");
         float intersest = scanner.nextFloat();
         System.out.print("Period (Years): ");
-        long years = scanner.nextInt();
+        int years = scanner.nextInt();
 
-        intersest = ((intersest/100)/12);
+        intersest = ((intersest/percent)/months);
         intersest = 1 + intersest;
-        years = years*12;
-        double dummy = Math.pow(intersest,(double) years);
+        int numberOfPayments = (years*months);
+        double dummy = Math.pow(intersest,(double) numberOfPayments);
         intersest = intersest - 1;
         double mortgage = (principal*((intersest*dummy)/(dummy-1)));
         mortgage = Math.round(mortgage);
